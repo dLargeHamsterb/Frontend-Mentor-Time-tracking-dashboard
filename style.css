@@ -1,15 +1,17 @@
+@font-face {
+	font-family: Rubik;
+	src: url(/fonts/Rubik-Regular.ttf);
+}
 
 
 
-
-
-
-.root{
+:root{
 box-sizing: border-box;
 font-size: 18px;
 
 /* Primary */
---color-Blue: hsl(246, 80%, 60%);
+--color-white: hsl(360, 100%, 100%);
+--color-blue: hsl(246, 80%, 60%);
 
 --color-Light-red-work: hsl(15, 100%, 70%);
 --color-Soft-blue-play: hsl(195, 74%, 62%);
@@ -24,6 +26,10 @@ font-size: 18px;
 --color-Desaturated-blue: hsl(235, 45%, 61%);
 --color-Pale-Blue: hsl(236, 100%, 87%);
 
+font-family: Rubik;
+
+--font-size-small: 0.6rem;
+--font-size-big: 2rem;
 }
 
 .attribution {
@@ -33,11 +39,12 @@ font-size: 18px;
 }
 
 body{
-	height: 100vh;
+	height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 	flex-direction: column;
+	background-color: var(--color-Very-dark-blue);
 }
 .wrapper{
 	display: grid;
@@ -45,4 +52,206 @@ body{
 	gap: 1rem;
 }
 
+.bigCard{
+	display: grid;
+	border-radius: 1rem;
+	grid-row: 1 / span 2;
+	background-color: var(--color-Dark-blue);
+	color: var(--color-white);
+}
+.person{
+	display: flex;
+	background-color: var(--color-blue);
+	border-radius: 1rem;
+	justify-content: space-between;
+	align-items: center;
+	padding:2rem 1rem 2rem 2rem;
+}
+.photo img{
+	height: 80px;
+	width: 80px;
+	box-shadow: 0 0 0 0.2rem white;
+	border-radius: 50%;
+}
+.personRaport{
+	padding-left: 1rem;
+}
+.raport {
+font-size: var(--font-size-small);
+margin-bottom: 0;
+opacity: 0.8;
+}
+.name{
+	display: flex;
+	flex-direction: row;
+	padding: 0;
+	margin: 0;
+}
+.personName{
+	font-size: 1.5rem;
+	margin: 0;
+	padding-right: 0.5rem;
+	opacity: 0.8;
+}
 
+.lastName{
+	font-size: 1.5rem;
+	margin-top: 0;
+	padding-right: 1.5rem;
+	opacity: 0.8;
+}
+
+
+.data{
+	display: grid;
+	grid-template-columns:1fr 1fr 1fr ;
+}
+
+.smallCard{
+	display: flex;
+	flex-direction: column;
+	border-radius: 1rem;
+	color: var(--color-white);
+	overflow: hidden;
+}
+.bgIcon{
+	display: flex;
+	border-radius: 0 0 1rem 1rem;
+	justify-content: end;
+	z-index: 1;
+	padding-right: 0.5rem;
+}
+
+.title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--color-Dark-blue);
+	padding: 0.5rem 1.5rem 0 1.5rem;
+	margin: -1.5rem 0 0 0;
+	align-items: center;
+	z-index: 2;
+	border-radius: 1rem 1rem 0 0;
+}
+
+#Work , #Play, #Study, #Exercise, #Social, .bgIcon{
+	background-repeat: no-repeat;
+	background-position: 85%;
+	transform: translateY(-1.3rem);
+	margin-bottom: -1.5rem;
+	padding-bottom: 1rem;
+
+}
+#Work{
+	background-color: var(--color-Light-red-work);
+	background-image: url(/images/icon-work.svg);
+}
+
+#Play{
+	background-color: var(--color-Soft-blue-play);
+	background-image: url(/images/icon-play.svg);
+}
+
+#Study{
+	background-color: var(--color-Light-red-study);
+	background-image: url(/images/icon-study.svg);
+}
+
+#Exercise{
+	background-color: var(--color-Lime-green-exercise);
+	background-image: url(/images/icon-exercise.svg);
+}
+
+#Social{
+	background-color: var(--color-Violet-social);
+	background-image: url(/images/icon-social.svg);
+
+}
+
+.bgIcon{
+	background-color: var(--color-Soft-orange-self-care);
+	background-image: url(/images/icon-self\ care.svg);
+}
+.time{
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--color-Dark-blue);
+	padding:  0 1.5rem 1rem 1.5rem ;
+	margin-top: 0;
+	align-items: center;
+}
+
+.current{
+	font-size: var(--font-size-big);
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	margin-top:0
+}
+
+.previous{
+	font-size: var(--font-size-small);
+	color: var(--color-white);
+	opacity: 0.8;
+
+}
+
+button{
+	display: flex;
+	padding: 1rem;
+	border: none;
+	background: none;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	color: var(--color-white);
+	opacity: 0.6;
+}
+
+button:hover{
+	opacity: 1;
+	cursor: pointer;
+}
+
+@media (min-width:1440px) {
+	.wrapper{
+		grid-template-columns: repeat(4, 1fr);
+	}
+	body{
+		height: 100vh;
+	}
+	.person{
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-start;
+		padding:0 0 0 1rem ;
+	}
+	.data{
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-columns: none;
+	}
+	.personRaport{
+		padding: 0 3rem 0 0;
+	}
+	.name{
+		flex-direction: column;
+		padding-left: 0;
+	}
+	.personName{
+		padding-right: 3rem;
+	}
+	.lastName{
+		padding-right: 3rem;
+	}
+	.time{
+		flex-direction: column;
+		padding:  0 0 1rem 1.5rem ;
+		align-items: flex-start;
+	}
+	button{
+		padding:0.2rem 0 0.2rem 1rem;
+		justify-content: left;
+
+	}
+
+}

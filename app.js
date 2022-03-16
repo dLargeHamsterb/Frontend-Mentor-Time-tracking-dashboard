@@ -13,10 +13,18 @@ card()
 function person(){
 
   const bigCard =
-  `<div class="big-card">
+  `<div class="bigCard">
   <div class="person">
-    Report for
-    Jeremy Robson
+    <div class="photo">
+     <img src="images/image-jeremy.png" alt="jeremy">
+    </div>
+    <div class="personRaport">
+    <p class="raport">Report for</p>
+    <div class="name">
+      <p class="personName">Jeremy</p>
+      <p class="lastName">Robson</p>
+      </div>
+    </div>
   </div>
 
   <div class="data">
@@ -33,17 +41,18 @@ function newCard(data){
 
   data.forEach(element => {
    const smallCard=
-  `<div class="${element.title} smallCard">
-    <div class="bg-icon">
-      <img src="images/icon-${element.title}.svg" alt="${element.title} icon">
+  `<div class="smallCard">
+    <div class="bgIcon" id="${element.title}">
+      <p></br></br>
+      </p>
     </div>
     <div class="title">
       <p>${element.title}</p>
-      <img src="images/icon-ellipsis.svg" alt="dote icon">
-    </div>
+      <div><img src="images/icon-ellipsis.svg" alt="dote icon"></div>
+      </div>
     <div class="time">
-    <p>${element.timeframes.daily.current}hrs</p>
-    <p>${element.timeframes.daily.previous}</p>
+    <p class="current" >${element.timeframes.weekly.current}hrs</p>
+    <p class="previous">Last Week - ${element.timeframes.weekly.previous}hrs</p>
   </div>
     `
     wrapper.innerHTML +=smallCard
@@ -58,9 +67,18 @@ function btnclick(data){
     let d = e.id
       e.addEventListener('click', function () {
         smallCard.forEach((e) => {
-          e.innerHTML = `<p>${day[i].timeframes[d].current}hrs</p>
-          <p>Previous - ${day[i].timeframes[d].previous}hrs</p>`
-          i++
+          if(d=="daily"){
+          e.innerHTML = `<p class="current">${day[i].timeframes.daily.current}hrs</p>
+          <p class="previous">Yesterday - ${day[i].timeframes.daily.previous}hrs</p>`
+          i++};
+          if(d=="weekly"){
+          e.innerHTML = `<p class="current">${day[i].timeframes.weekly.current}hrs</p>
+          <p class="previous">Last Week - ${day[i].timeframes.weekly.previous}hrs</p>`
+          i++};
+          if(d=="monthly"){
+          e.innerHTML = `<p class="current">${day[i].timeframes.monthly.current}hrs</p>
+          <p class="previous">Last Month - ${day[i].timeframes.monthly.previous}hrs</p>`
+          i++};
         });
         i=0;
       });
